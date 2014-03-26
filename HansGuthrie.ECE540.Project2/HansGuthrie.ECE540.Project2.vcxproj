@@ -38,13 +38,19 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <SourcePath>U:\ECE540\HansGuthrie.ECE540.Project2\HansGuthrie.ECE540.Project2\ResourceFiles;$(SourcePath)</SourcePath>
+    <IncludePath>U:\ECE540\HansGuthrie.ECE540.Project2\HansGuthrie.ECE540.Project2\ResourceFiles;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>U:\ECE540\HansGuthrie.ECE540.Project2\HansGuthrie.ECE540.Project2\ResourceFiles;U:\ECE540\HansGuthrie.ECE540.Project2\HansGuthrie.ECE540.Project2\IncludedFiled;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ShowIncludes>true</ShowIncludes>
+      <AdditionalUsingDirectories>U:\ECE540\HansGuthrie.ECE540.Project2\HansGuthrie.ECE540.Project2\ResourceFiles;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -72,17 +78,23 @@
     <ClInclude Include="MatrixRead.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="IncludedFiled\BinaryRead.cpp" />
+    <ClCompile Include="IncludedFiled\BinaryRead.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="IncludedFiled\matrix.cpp" />
     <ClCompile Include="IncludedFiled\RandomNumbers.cpp" />
-    <ClCompile Include="IncludedFiled\ReadCSVMain.cpp" />
     <ClCompile Include="IncludedFiled\ReadInCsvFile.cpp" />
-    <ClCompile Include="MatrixRead.cpp" />
     <ClCompile Include="Project2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ResourceFiles\Binary01.mtx" />
-    <None Include="ResourceFiles\Text01.mtx" />
+    <Resource Include="Binary01.mtx">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Resource>
+    <Resource Include="Text01.mtx">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Resource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

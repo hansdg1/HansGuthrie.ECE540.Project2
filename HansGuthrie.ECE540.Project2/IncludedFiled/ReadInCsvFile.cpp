@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "AppendArray.h"
 
+//#define _CRT_SECURE_NO_WARNINGS
+
 #define BLOCK_SIZE 128
 
 // Support function for ReadInCSVFile
