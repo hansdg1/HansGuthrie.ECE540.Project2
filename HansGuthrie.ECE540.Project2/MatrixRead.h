@@ -49,7 +49,7 @@ matrix ReadCsvMatrix( char *Name )
 	}
 
 	// Tell the user the size of file read.
-	printf( "TestFile.csv was read in with %d Rows and %d Columns\n\n", Rows, Columns );
+	printf( "%s was read in with %d Rows and %d Columns\n\n", Name, Rows, Columns );
 
 	printf( "First entry in %s: \t\t%18.16lf\n", Name, output( 0, 0 ) );
 	printf( "Second entry in %s: \t\t%18.16lf\n", Name, output( 0, 1 ) );
@@ -63,56 +63,80 @@ matrix ReadCsvMatrix( char *Name )
 }
 matrix ReadBinaryMatrix( char *Name )
 {
-	int j, k;
+	int Rows, Columns;
 	FILE *fin;
 	matrix output;
 	fin = fopen( Name, "rb" );
 
-	int dimensions[ 2 ];
-	//double *Data;
-	double *testarr = NULL;
+	fread( &Rows, sizeof( int ), 1, fin );
+	fread( &Columns, sizeof( int ), 1, fin );
 
-	matrix output = NULL;
-	if ( !fin )
-	{
-		// tell user and exit.
-		printf( "Error reading %s\n", Name);
-		return 0;
-	}	
-	
+	output = matrix( Rows, Columns );
+
 	if ( fin )
 	{
-		//all this gets the number of rows/cols from the beginning of the file
-		cnt = fread( dimensions, sizeof(int), 2, fin );
-		if ( cnt == 2 )
-		{
-			//creates the output matrix with the found dimensions
-			output=matrix( dimensions[ 0 ], dimensions[ 1 ] ); 
-			int size = dimensions[ 0 ] * dimensions[ 1 ];
-			testarr = new double[ size ];
-		}
+		fread( output.AsPointer( ), sizeof( double ), Rows*Columns, fin );
 
+		// Tell the user the size of file read.
+		printf( "%s was read in with %d Rows and %d Columns\n\n", Name, Rows, Columns );
 
-		fread( testarr, sizeof( double ), dimensions[1], fin );
-
-		for ( j = 0; j < dimensions[ 0 ]; j++ )
-		{
-			//loop through the columns
-			for ( k = 0; k < dimensions[ 1 ]; k++ )
-			{
-				//take this point (j, k) and copy the appropriate value of the Data array in to it
-				output( j, k ) = testarr[ counter ];
-				counter++; //increment the counter
-			}
-		}
-		//printf( "%lg, %lg", output( 0, 2 ), output( 0, 3 ) );
-
-
+		printf( "First entry in %s: \t\t%18.16lf\n", Name, output( 0, 0 ) );
+		printf( "Second entry in %s: \t\t%18.16lf\n", Name, output( 0, 1 ) );
+		printf( "Pinultimate entry in %s: \t%18.16lf\n", Name, output( Rows - 1, Columns - 1 ) );
+		printf( "Last entry in %s: \t\t%18.16lf\n", Name, output( Rows - 1, Columns - 2 ) );
+		fclose( fin );
 	}
 
+	printf( "\n------------------------------------\n" );
 
-	fclose( fin );
 	return output;
+
+
+	//int dimensions[ 2 ];
+	////double *Data;
+	//double *testarr = NULL;
+
+	//matrix output = NULL;
+	//if ( !fin )
+	//{
+	//	// tell user and exit.
+	//	printf( "Error reading %s\n", Name);
+	//	return 0;
+	//}	
+	//
+	//if ( fin )
+	//{
+	//	//all this gets the number of rows/cols from the beginning of the file
+	//	cnt = fread( dimensions, sizeof(int), 2, fin );
+	//	if ( cnt == 2 )
+	//	{
+	//		//creates the output matrix with the found dimensions
+	//		output=matrix( dimensions[ 0 ], dimensions[ 1 ] ); 
+	//		int size = dimensions[ 0 ] * dimensions[ 1 ];
+	//		testarr = new double[ size ];
+	//	}
+
+
+	//	fread( testarr, sizeof( double ), dimensions[1], fin );
+
+	//	for ( j = 0; j < dimensions[ 0 ]; j++ )
+	//	{
+	//		//loop through the columns
+	//		for ( k = 0; k < dimensions[ 1 ]; k++ )
+	//		{
+	//			//take this point (j, k) and copy the appropriate value of the Data array in to it
+	//			output( j, k ) = testarr[ counter ];
+	//			counter++; //increment the counter
+	//		}
+	//	}
+	//	//printf( "%lg, %lg", output( 0, 2 ), output( 0, 3 ) );
+
+
+	//}
+
+
+	//fclose( fin );
+	//return output;
 }
 
 #endif
