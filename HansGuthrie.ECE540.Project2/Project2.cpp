@@ -5,8 +5,10 @@
 //using Text01.mtx
 
 #define _CRT_SECURE_NO_WARNINGS
+//void part1();
 
-void main()
+
+void part1( )
 {
 	clock_t Time0, Time1, Time2; //Start time, Time after CSVRead, Time after BinaryRead
 	matrix CsvMatrix, BinaryMatrix;
@@ -30,7 +32,23 @@ void main()
 		(double)( Time2 - Time1 ) / (double)CLOCKS_PER_SEC
 		);
 
-	getchar();
+}
+
+void part2( )
+{
+
+}
 
 
+void part3( )
+{
+
+}
+
+void main( )
+{
+
+	part1( ); //call the function responsible for part 1
+
+	getchar( );
 }
