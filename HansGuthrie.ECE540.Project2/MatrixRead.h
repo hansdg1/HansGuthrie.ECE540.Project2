@@ -12,8 +12,6 @@
 #ifndef MatrixRead_h
 #define MatrixRead_h 0
 
-
-//a lot of this code is tajen from the "ReadCSVExample_1.pdf" file
 matrix ReadCsvMatrix( char *Name )
 {
 	matrix output;

@@ -71,13 +71,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Eigenvalues.h" />
     <ClInclude Include="IncludedFiled\AppendArray.h" />
     <ClInclude Include="IncludedFiled\matrix.hpp" />
+    <ClInclude Include="IncludedFiled\MatrixOutputs.hpp" />
     <ClInclude Include="IncludedFiled\RandomNumbers.h" />
     <ClInclude Include="IncludedFiled\ReadInCsvFile.h" />
     <ClInclude Include="MatrixRead.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Eigenvalues.cpp" />
     <ClCompile Include="IncludedFiled\BinaryRead.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>

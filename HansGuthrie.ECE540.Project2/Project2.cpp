@@ -1,5 +1,7 @@
 #include "MatrixRead.h"
+#include "Eigenvalues.h"
 #include <time.h>
+#define eps 2.22e-16;
 //#include "ReadInCsvFile.h"
 //#include <stdio.h>
 //using Text01.mtx
