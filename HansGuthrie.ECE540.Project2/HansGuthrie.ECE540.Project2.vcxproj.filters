@@ -30,10 +30,10 @@
     <ClInclude Include="IncludedFiled\AppendArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Eigenvalues.h">
+    <ClInclude Include="IncludedFiled\MatrixOutputs.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IncludedFiled\MatrixOutputs.hpp">
+    <ClInclude Include="EigenValues.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,7 +53,7 @@
     <ClCompile Include="IncludedFiled\BinaryRead.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Eigenvalues.cpp">
+    <ClCompile Include="EigenValues.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,6 +62,15 @@
       <Filter>Resource Files</Filter>
     </Resource>
     <Resource Include="Binary01.mtx">
+      <Filter>Resource Files</Filter>
+    </Resource>
+    <Resource Include="Binary02.mtx">
+      <Filter>Resource Files</Filter>
+    </Resource>
+    <Resource Include="Binary03.mtx">
+      <Filter>Resource Files</Filter>
+    </Resource>
+    <Resource Include="Binary04.mtx">
       <Filter>Resource Files</Filter>
     </Resource>
   </ItemGroup>

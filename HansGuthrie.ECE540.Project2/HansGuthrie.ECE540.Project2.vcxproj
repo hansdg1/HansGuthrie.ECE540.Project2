@@ -51,6 +51,7 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ShowIncludes>true</ShowIncludes>
       <AdditionalUsingDirectories>U:\ECE540\HansGuthrie.ECE540.Project2\HansGuthrie.ECE540.Project2\ResourceFiles;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -71,7 +72,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Eigenvalues.h" />
+    <ClInclude Include="EigenValues.h" />
     <ClInclude Include="IncludedFiled\AppendArray.h" />
     <ClInclude Include="IncludedFiled\matrix.hpp" />
     <ClInclude Include="IncludedFiled\MatrixOutputs.hpp" />
@@ -80,7 +81,7 @@
     <ClInclude Include="MatrixRead.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Eigenvalues.cpp" />
+    <ClCompile Include="EigenValues.cpp" />
     <ClCompile Include="IncludedFiled\BinaryRead.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -97,6 +98,20 @@
     <Resource Include="Text01.mtx">
       <FileType>Document</FileType>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Binary02.mtx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <FileType>Document</FileType>
+    </Resource>
+    <Resource Include="Binary03.mtx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <FileType>Document</FileType>
+    </Resource>
+    <Resource Include="Binary04.mtx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <FileType>Document</FileType>
     </Resource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

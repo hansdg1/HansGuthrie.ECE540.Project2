@@ -48,6 +48,7 @@ matrix ReadCsvMatrix( char *Name )
 	
 	return output;
 }
+
 matrix ReadBinaryMatrix( char *Name )
 {
 	int Rows, Columns;

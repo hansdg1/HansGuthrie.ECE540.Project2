@@ -10,7 +10,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 //void part1();
 
-
+///Part 1 of the project
 void part1( )
 {
 	int Rows, Columns;
@@ -61,29 +61,55 @@ void part1( )
 	//for each( char* c in filenames )
 }
 
+///Part 2 of the project (created this before I realized there was no output)
 //void part2( )
 //{
 //
 //}
 
-//big loop for each filenames
+///Part 3 of the project
 void part3( )
 {
 	char* filenames[] = { "Binary02.mtx", "Binary03.mtx", "Binary04.mtx" };
-	matrix A, EigenVec, EigenVal;
+	matrix A, EigenVec, EigenVal,EigDecomposition;
 	int Rows, Columns;
+	double EigCondition, MatCondition;
 
 	A = ReadBinaryMatrix( filenames[ 0 ] );
-	//PrintMatrix( A );
+
+	Rows = A.wide( );
+	Columns = A.high( );
+	EigenVal = eye( Rows );
+	EigenVec = matrix( Rows, Columns );
+	EigenVec = EigenV_V( A, EigenVal );
+	EigCondition = EigenVal( 0, 0 ) / EigenVal( Rows - 1, Rows - 1 );
+	MatCondition = A.condition( );
+	EigDecomposition = EigenVec*EigenVal*EigenVec.transpose( );
 
 	printf( "Input Matrix '%s'\n", filenames[ 0 ] );
+	PrintMatrix( A );
+
+	printf( "condition from object = %lf\n", MatCondition );
+	printf( "condition from eigens = %lf\n\n", EigCondition );
+
+	printf( "EigenValues Matrix\n" );
+	PrintMatrix( EigenVal );
+	printf( "\n" );
+
+	printf( "EigenVector Matrix\n" );
+	PrintMatrix( EigenVec );
+	printf( "\n" );
+
+	printf( "Test of Eigen Decomposition (V*D*V') = A\n" );
+	PrintMatrix( EigDecomposition );
+	printf( "\n" );
+
 
 }
 
 void main( )
 {
-
-	part1( ); //call the function responsible for part 1
-	//part3( );
+	//part1( ); //call the function responsible for part 1
+	part3( );
 	getchar( );
 }
