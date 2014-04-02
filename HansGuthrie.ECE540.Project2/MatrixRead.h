@@ -12,13 +12,13 @@
 #ifndef MatrixRead_h
 #define MatrixRead_h 0
 
+//Reads in a matrix from a CSV file. 
 matrix ReadCsvMatrix( char *Name )
 {
 	matrix output;
 	int j, k, counter = 0;
 	int    Length = 0, Rows, Columns;
 	double *Data, temp;
-	
 
 	Data = ReadInCSVFile( Name, &Rows, &Columns );
 	//matrix output( Rows, Columns );
@@ -31,8 +31,6 @@ matrix ReadCsvMatrix( char *Name )
 		printf( "Error reading %s\n", Name );
 		return 0;
 	}
-
-	
 
 	//loop through rows to transform the Data array into a matrix
 	for ( j = 0; j < Rows; j++ )
@@ -47,8 +45,9 @@ matrix ReadCsvMatrix( char *Name )
 	}
 	
 	return output;
-}
+} // end ReadCsvMatrix
 
+//Reads in a matrix file from a binary formatted matrix. 
 matrix ReadBinaryMatrix( char *Name )
 {
 	int Rows, Columns;
@@ -56,19 +55,18 @@ matrix ReadBinaryMatrix( char *Name )
 	matrix output;
 	fin = fopen( Name, "rb" );
 
+	//Gets the rows/cols from the beginning of the file
 	fread( &Rows, sizeof( int ), 1, fin );
 	fread( &Columns, sizeof( int ), 1, fin );
 
-	output = matrix( Rows, Columns );
-
-	if ( fin )
+	output = matrix( Rows, Columns ); //creates  the output matrix
+	
+	if ( fin ) //if successfully opened file for reading
 	{
-		fread( output.AsPointer( ), sizeof( double ), Rows*Columns, fin );
+		fread( output.AsPointer( ), sizeof( double ), Rows*Columns, fin ); //Read through the file for elements the size of a double
 		fclose( fin );
 	}
-
 	return output;
-
-}
+} //end ReadBinaryMatrix
 
 #endif

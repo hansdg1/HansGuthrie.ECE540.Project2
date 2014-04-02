@@ -2,7 +2,7 @@
 //#define eps 2.22e-16 
 #include "EigenValues.h"
 
-
+///Function for Normalizing a pointer to vector '*y' with length 'Length'
 double *NormalizeVector( double *y, int Length )
 {
 	double Scale, *Local;
@@ -24,6 +24,8 @@ double *NormalizeVector( double *y, int Length )
 	} // End of loop to normalize the entries in the vector.
 	return y;
 } // end of NormalizeVector
+
+//Calculated the sum of the squares for the input vectors '*x' and '*y'
 double SumSquaredDifference( double *x, double *y, int Length )
 {
 	int k;
@@ -38,46 +40,9 @@ double SumSquaredDifference( double *x, double *y, int Length )
 	return sqrt( Distance );
 } // End of SumSquaredDifference
 
-
-//matrix LargestEigenValue( matrix A, double *EigenValue, double Tolerance )
-//{
-//	int k, Rows, Columns;
-//	double D;
-//	matrix X, Y;
-//
-//	Rows = A.wide( );
-//	Columns = A.high( );
-//	X = matrix( Rows );
-//	//check if A is invalid
-//	if ( A.isInvalid() )
-//	{
-//		printf( "A is invalid" );
-//		return NULL;
-//	}
-//	else
-//	{
-//		for ( k = 0; k < Rows; k++ )
-//		{
-//			X( k ) = 1.0 / sqrt( 1.0*Rows );
-//		}
-//		k = 1000;
-//		D = 1.0;
-//
-//		while ( D > Tolerance
-//			&& --k )
-//		{
-//			Y = A*X;
-//			D = SumSquaredDifference( X.AsPointer( ), 
-//				NormalizeVector( Y.AsPointer( ), Rows ),
-//				Rows
-//				);
-//		}
-//	}
-//	Y = A*X;
-//	*EigenValue = ( Y( 0 ) / X( 0 ) );
-//	return X;
-//
-//}
+//Returns the largest eigenvector and eigenvalue for 'A'
+//Uses the power method and stops iterating once sum squared 
+//error in vectors is below tolerance. 
 matrix LargestEigenValue(matrix A, double *EigenValue, double Tolerance)
 {
 	int k, Rows, Columns;
@@ -112,7 +77,7 @@ matrix LargestEigenValue(matrix A, double *EigenValue, double Tolerance)
 	return X;
 }
 
-
+//Deflates the matrix 'A' by removing an eigenvalue vector set
 matrix DeflateMatrix( matrix A, double *EigenValue, matrix EigenVector )
 {
 	int k, Rows, Columns, m;
@@ -128,6 +93,8 @@ matrix DeflateMatrix( matrix A, double *EigenValue, matrix EigenVector )
 	return DeflateMatrix;
 }
 
+//Computes all the eigenvalues and vecos for a matrix 'A'. 
+//Eigenvalues are returned as a matrix with each column being one of the vectors
 matrix EigenV_V( matrix A, matrix &EigenValues )
 {
 	int R, C, m, k;
