@@ -52,6 +52,7 @@ void part1( )
 		filenames[ 1 ],
 		(double)( Time2 - Time1 ) / (double)CLOCKS_PER_SEC
 		);
+	printf( "\n------------------------------------\n" );
 
 
 	//Was going to try to use a large loop to avoid dupliate print statements above, but can't do this because each matrix is processed using a different function.
@@ -65,11 +66,13 @@ void part3( )
 	//array containing the filenames of different files used in the project.
 	//this makes is easy to quickly switch files
 	char* filenames[] = { "Binary02.mtx", "Binary03.mtx", "Binary04.mtx" };
+	char* filename = filenames[ 1 ]; //**Set the filename here from the array of filenames**
+
 
 	matrix A, EigenVec, EigenVal,EigDecomposition;
 	int Rows, Columns;
 	double EigCondition, MatCondition;
-	char* filename = filenames[ 2 ]; //set the filename from the array of filenames
+	
 	//reads the BinaryMatrix for the particular file chosen from the 'filename' array
 	A = ReadBinaryMatrix( filename ); 
 
@@ -108,7 +111,7 @@ void part3( )
 
 void main( )
 {
-	//part1( ); //call the function responsible for part 1
+	part1( ); //call the function responsible for part 1
 	part3( ); //call the functions for part 2 and 3 of the project
 	getchar( );
 }
