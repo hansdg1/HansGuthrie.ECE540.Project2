@@ -66,7 +66,7 @@ void part3( )
 	//array containing the filenames of different files used in the project.
 	//this makes is easy to quickly switch files
 	char* filenames[] = { "Binary02.mtx", "Binary03.mtx", "Binary04.mtx" };
-	char* filename = filenames[ 1 ]; //**Set the filename here from the array of filenames**
+	char* filename = filenames[ 0 ]; //**Set the filename here from the array of filenames**
 
 
 	matrix A, EigenVec, EigenVal,EigDecomposition;
